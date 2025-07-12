@@ -324,28 +324,28 @@ DevFlow/
 
 ## Timeline & Milestones
 
-### Phase 1 (Hours 1-8): Foundation
+### Phase 1: Foundation
 - ✅ Project setup and architecture
 - ✅ Supabase configuration
 - ✅ Basic authentication
 - ✅ Core database schema
 - ✅ Basic UI components
 
-### Phase 2 (Hours 9-16): Core Features
+### Phase 2: Core Features
 - ✅ Question CRUD operations
 - ✅ Rich text editor integration
 - ✅ Answer system
 - ✅ Voting mechanism
 - ✅ Basic search functionality
 
-### Phase 3 (Hours 17-24): Advanced Features
+### Phase 3: Advanced Features
 - ✅ Real-time notifications
 - ✅ Tag system
 - ✅ User profiles and reputation
 - ✅ Admin panel
 - ✅ Performance optimization
 
-### Phase 4 (Hours 25-32): Polish & Testing
+### Phase 4: Polish & Testing
 - ✅ UI/UX refinement
 - ✅ Mobile responsiveness
 - ✅ Security testing
