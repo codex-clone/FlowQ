@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.38.4",
     "@tanstack/react-query": "^5.0.0",
     "@tiptap/pm": "^2.1.0",
     "@tiptap/react": "^2.1.0",
     "@tiptap/starter-kit": "^2.1.0",
     "class-variance-authority": "^0.7.0",
+    "date-fns": "^2.30.0",
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.284.0",
     "next": "14.0.0",

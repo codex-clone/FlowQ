@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Script from 'next/script'
+import { AuthProvider } from '@/contexts/AuthContext'
 
 export const metadata: Metadata = {
   title: 'FlowQ - Developer Q&A Platform',
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
         <Script id="theme-script" strategy="beforeInteractive">
           {`
           // Check if dark mode preference exists in localStorage
