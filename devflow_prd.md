@@ -1,8 +1,8 @@
-# DevFlow - Product Requirements Document (PRD)
+# FlowQ - Product Requirements Document (PRD)
 
 ## Executive Summary
 
-**DevFlow** is a modern, developer-centric Q&A platform designed to facilitate collaborative learning and structured knowledge sharing. Built with cutting-edge technology and superior UX design, DevFlow aims to become the go-to platform for developers seeking expert answers and sharing knowledge.
+**FlowQ** is a modern, developer-centric Q&A platform designed to facilitate collaborative learning and structured knowledge sharing. Built with cutting-edge technology and superior UX design, FlowQ aims to become the go-to platform for developers seeking expert answers and sharing knowledge.
 
 ### Vision Statement
 *"To create the most intuitive and powerful Q&A platform that transforms how developers learn, share, and collaborate."*
@@ -265,7 +265,7 @@ notifications (
 
 ### Information Architecture
 ```
-DevFlow/
+FlowQ/
 ├── Home/
 │   ├── Featured Questions
 │   ├── Recent Activity
@@ -374,9 +374,9 @@ DevFlow/
 
 ## Conclusion
 
-DevFlow represents a next-generation Q&A platform that combines technical excellence with superior user experience. By leveraging modern technologies like Supabase, React, and TypeScript, we're building a platform that not only meets current needs but anticipates future requirements.
+FlowQ represents a next-generation Q&A platform that combines technical excellence with superior user experience. By leveraging modern technologies like Supabase, React, and TypeScript, we're building a platform that not only meets current needs but anticipates future requirements.
 
-The comprehensive feature set, thoughtful architecture, and user-centric design position DevFlow as a winning solution for the hackathon while providing a solid foundation for future growth and development.
+The comprehensive feature set, thoughtful architecture, and user-centric design position FlowQ as a winning solution for the hackathon while providing a solid foundation for future growth and development.
 
 **Key Differentiators:**
 - Modern tech stack with Supabase backend

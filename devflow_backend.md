@@ -1,4 +1,4 @@
-# DevFlow - Backend Architecture & Implementation Guide
+# FlowQ - Backend Architecture & Implementation Guide
 
 ## Table of Contents
 1. [Architecture Overview](#architecture-overview)

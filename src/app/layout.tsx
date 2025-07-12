@@ -1,44 +1,37 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/layout/Header";
-import Sidebar from "@/components/layout/Sidebar";
-import Footer from "@/components/layout/Footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import type { Metadata } from 'next'
+import './globals.css'
+import Script from 'next/script'
 
 export const metadata: Metadata = {
-  title: "DevFlow",
-  description: "A modern Q&A platform for developers.",
-};
+  title: 'FlowQ - Developer Q&A Platform',
+  description: 'A modern Q&A platform for developers to ask questions and share knowledge',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <div className="flex flex-1">
-            <Sidebar />
-            <main className="flex-1 p-4">{children}</main>
-          </div>
-          <Footer />
-        </div>
+    <html lang="en" suppressHydrationWarning>
+      <body className="antialiased">
+        {children}
+        <Script id="theme-script" strategy="beforeInteractive">
+          {`
+          // Check if dark mode preference exists in localStorage
+          const isDarkMode = localStorage.getItem('darkMode') === 'true';
+          // Or use system preference if no preference is set
+          const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          
+          // Apply dark mode if needed
+          if (isDarkMode || (systemPrefersDark && localStorage.getItem('darkMode') === null)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+          `}
+        </Script>
       </body>
     </html>
-  );
+  )
 }
