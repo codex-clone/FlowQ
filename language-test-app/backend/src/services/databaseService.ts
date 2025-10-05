@@ -130,6 +130,10 @@ export const databaseService = {
     return getAsync<TestSession>('SELECT * FROM test_sessions WHERE id = ?', [result.id!]);
   },
 
+  async getTestSessionById(testId: number) {
+    return getAsync<TestSession>('SELECT * FROM test_sessions WHERE id = ?', [testId]);
+  },
+
   async updateTestSessionScore(testId: number, score: number, status: string) {
     await runAsync(
       `UPDATE test_sessions SET score = ?, status = ?, completed_at = CURRENT_TIMESTAMP WHERE id = ?`,

@@ -75,12 +75,22 @@ export const submitResponse = async (req: Request, res: Response, next: NextFunc
       throw new AppError('Session ID and question ID are required', 400);
     }
 
+    const numericTestId = Number(testId);
+    if (Number.isNaN(numericTestId)) {
+      throw new AppError('Invalid test ID', 400);
+    }
+
     const session = await databaseService.getSession(session_id);
     if (!session) {
       throw new AppError('Session not found', 404);
     }
 
-    const testQuestions = await databaseService.getQuestionsBySession(Number(testId));
+    const testSession = await databaseService.getTestSessionById(numericTestId);
+    if (!testSession || testSession.user_id !== session.id) {
+      throw new AppError('Test session not found', 404);
+    }
+
+    const testQuestions = await databaseService.getQuestionsBySession(numericTestId);
     const question = testQuestions.find((q) => q.id === Number(question_id));
     if (!question) {
       throw new AppError('Question not found in test session', 404);
@@ -130,17 +140,27 @@ export const completeTest = async (req: Request, res: Response, next: NextFuncti
     const { testId } = req.params;
     const { session_id } = req.body;
 
+    const numericTestId = Number(testId);
+    if (Number.isNaN(numericTestId)) {
+      throw new AppError('Invalid test ID', 400);
+    }
+
     const session = await databaseService.getSession(session_id);
     if (!session) {
       throw new AppError('Session not found', 404);
     }
 
-    const questions = await databaseService.getQuestionsBySession(Number(testId));
+    const testSession = await databaseService.getTestSessionById(numericTestId);
+    if (!testSession || testSession.user_id !== session.id) {
+      throw new AppError('Test session not found', 404);
+    }
+
+    const questions = await databaseService.getQuestionsBySession(numericTestId);
     if (!questions.length) {
       throw new AppError('No questions found for this test', 400);
     }
 
-    const userResponses = await databaseService.getResponsesBySession(Number(testId));
+    const userResponses = await databaseService.getResponsesBySession(numericTestId);
     const scoredResponses = userResponses.filter((response) => typeof response.score === 'number');
     const aggregatedScore = scoredResponses.length
       ?
@@ -150,7 +170,7 @@ export const completeTest = async (req: Request, res: Response, next: NextFuncti
 
     const normalizedScore = Number(aggregatedScore.toFixed(2));
 
-    await databaseService.updateTestSessionScore(Number(testId), normalizedScore, 'completed');
+    await databaseService.updateTestSessionScore(numericTestId, normalizedScore, 'completed');
 
     res.json({
       score: normalizedScore,
